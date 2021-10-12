@@ -37,4 +37,53 @@ function getDateString(){
   return dateString;
 }
 
-console.log(getDateString());
+function mirrorDateString(str) {
+  /* 
+    creating mirrored dateString ddmmyyyyyyyymmdd
+    refernce for inversing the string:
+    https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
+  */
+  let mirror = str+ str.split("").reverse().join("");
+  mirror = mirror.split("");
+  return mirror;
+}
+
+function getNumbersPie(dateStr) {
+  /* creating the array from date for the mandala 'pieslice' of date numbers */
+  let mirror = mirrorDateString(dateStr);
+  let numbersPie = [];
+
+  console.log(numbersPie);
+  numbersPie.push(mirror);
+  console.log(numbersPie);
+
+  let counter1, counter2;
+  do {
+    counter1 = 16;
+    for (let j = 1; j < mirror.length; j++) {
+      counter1--;
+      let pie = numbersPie[j-1];
+      let array = [];
+      for (let i = 0; i <= counter1; i++) {
+        let a, b;
+        a = Number.parseInt(pie[i]);
+        b = Number.parseInt(pie[i+1]);
+        let sum = a + b;
+        array.push(sum);
+      }
+      numbersPie.push(array);
+      //console.log(numbersPie);
+    }
+    //console.log(counter);
+    counter1--;
+  } while (counter1 > 0);
+
+  for (let i = 0; i < numbersPie.length; i++){
+    console.log(numbersPie[i]);
+  }
+  return numbersPie;
+}
+
+//calling functions for testing
+let dateString = getDateString();
+let numbersPie = getNumbersPie(dateString);
