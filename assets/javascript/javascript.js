@@ -15,7 +15,7 @@ function getDateString(){
     for testing purposes of functions 
     for now only using today's date
   */
-  let dateInput = new Date; // date is the today's date
+  let dateInput = new Date(); // date is the today's date
 
   // dd
   date = dateInput.getDate().toString();
@@ -48,8 +48,46 @@ function mirrorDateString(str) {
   return mirror;
 }
 
+// F2 - input str, return array
+function getPaired(str) {
+  /** turns received string to pairs of its symbols */
+}
+
+// F3 - input array, return number
+function getSummed(arr) {
+  /** receives [],[]  
+   * sums the 2 elements together
+   * if sum < 10 returns result as str
+   * else pass sum to getPaired() as a str
+   * run itself
+  */
+}
+
+// F4 - input array, return str
+function getNewString(arr) {
+  /** receive array of pairs
+   * declare a str 
+   * iterate the array and run getSummed() for each
+   * add result to str
+   * return str
+  */
+}
+
+// F1 - input str, return array
 function getNumbersPie(dateStr) {
-  /* creating the array from date for the mandala 'pieslice' of date numbers */
+  /** define a array of arrays to contain the mandala result
+   * iterate str -> F2 -> array of pairs -> F4 -> str -> mandala array
+   * return mandala array
+  */
+
+
+
+
+
+
+
+  
+  /* creating the array from date for the mandala 'pieslice' of date numbers 
   let mirror = mirrorDateString(dateStr);
   let numbersPie = [];
 
@@ -64,7 +102,7 @@ function getNumbersPie(dateStr) {
       counter1--;
       let pie = numbersPie[j-1];
       let array = [];
-      for (let i = 0; i <= counter1; i++) {
+      for (let i = 0; i < counter1; i++) {
         let a, b;
         a = Number.parseInt(pie[i]);
         b = Number.parseInt(pie[i+1]);
@@ -82,6 +120,7 @@ function getNumbersPie(dateStr) {
     console.log(numbersPie[i]);
   }
   return numbersPie;
+  */
 }
 
 //calling functions for testing
