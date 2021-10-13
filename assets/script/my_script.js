@@ -80,7 +80,16 @@ function getNumbersPie(dateStr) {
    * return mandala array
   */
   
-  //
+  let mandalaSlice = [[dateStr]];
+  
+  for (let i=0; i<16; i++) {
+    let pairs = getPaired(mandalaSlice[i]); // gets pairs from the previous array
+    let array = getNewString(pairs); // creates a new array
+    mandalaSlice.push(array);
+    console.log(mandalaSlice);
+
+    return mandalaSlice;
+  }
 
 
 
@@ -127,4 +136,5 @@ function getNumbersPie(dateStr) {
 
 //calling functions for testing
 let dateString = getDateString();
-let numbersPie = getNumbersPie(dateString);
+let mirrDateString = mirrorDateString(dateString);
+let numbersPie = getNumbersPie(mirrDateString);
