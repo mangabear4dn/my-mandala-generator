@@ -33,8 +33,8 @@ function getDateString(){
   year = dateInput.getFullYear().toString(); 
   
   // dateString
-  let dateString = date + month + year;
-  return dateString;
+  dateInput = date + month + year;
+  return dateInput;
 }
 
 function mirrorDateString(str) {
@@ -44,7 +44,7 @@ function mirrorDateString(str) {
     https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
   */
   let mirror = str + str.split("").reverse().join("");
-  mirror = mirror.split("");
+  mirror.split("");
   return mirror;
 }
 
@@ -53,10 +53,13 @@ function getPaired(str) {
   /** turns received string to pairs of its symbols */
   let arr = [];
 
-  str = str.split("");
+  str.split("");
 
   for (let i = 0; arr.length < str.length; i++) {
     let p = [];
+    if (!(str[i+1])){
+      break;
+    }
     p.push(str[i]);
     p.push(str[i+1]);
     arr.push(p);
@@ -72,20 +75,19 @@ function getSummed(arr) {
    * else pass sum to getPaired() as a str
    * run itself
   */
-  //arr = ['1', '2'];
   let sum;
-  a1 = Number.parseInt(arr[0]);
-  a2 = Number.parseInt(arr[1]);
+  let a1 = Number.parseInt(arr[0]);
+  let a2 = Number.parseInt(arr[1]);
   sum = a1 + a2;
-  if (sum > 10) {
-    sum = sum.toString;
+  if (sum > 9) {
+    sum = sum.toString();
     let p = [];
     sum = sum.split("");
     p.push(sum[0]);
     p.push(sum[1]);
-    getSummed(p);
+    sum = getSummed(p);
   }
-  return sum.toString;
+  return sum.toString();
 }
 
 // F4 - input array, return str
@@ -96,14 +98,14 @@ function getNewString(arr) {
    * add result to str
    * return str
   */
-  let str;
+  let str = [];
 
-  arr.array.forEach(element => {
+  arr.forEach(element => {
     let sum = getSummed(element);
     str.push(sum);
   });
-
-  return str;
+  //console.log(str); 
+  return str.join("");
 }
 
 // F1 - input str, return array
@@ -113,61 +115,20 @@ function getNumbersPie(dateStr) {
    * return mandala array
   */
   
-  let mandalaSlice = [[dateStr]];
+  let mandalaSlice = [];
+  mandalaSlice.push(dateStr);
   
-  for (let i=0; i<16; i++) {
+  for (let i=0; i<15; i++) {
     let pairs = getPaired(mandalaSlice[i]); // gets pairs from the previous array
     let array = getNewString(pairs); // creates a new array
     mandalaSlice.push(array);
-    console.log(mandalaSlice);
-
-    return mandalaSlice;
+    //console.log(array);
   }
-
-
-
-
-
-
-
-  
-  /* creating the array from date for the mandala 'pieslice' of date numbers 
-  let mirror = mirrorDateString(dateStr);
-  let numbersPie = [];
-
-  console.log(numbersPie);
-  numbersPie.push(mirror);
-  console.log(numbersPie);
-
-  let counter1, counter2;
-  do {
-    counter1 = 16;
-    for (let j = 1; j < mirror.length; j++) {
-      counter1--;
-      let pie = numbersPie[j-1];
-      let array = [];
-      for (let i = 0; i < counter1; i++) {
-        let a, b;
-        a = Number.parseInt(pie[i]);
-        b = Number.parseInt(pie[i+1]);
-        let sum = a + b;
-        array.push(sum);
-      }
-      numbersPie.push(array);
-      //console.log(numbersPie);
-    }
-    //console.log(counter);
-    counter1--;
-  } while (counter1 > 0);
-
-  for (let i = 0; i < numbersPie.length; i++){
-    console.log(numbersPie[i]);
-  }
-  return numbersPie;
-  */
+  return mandalaSlice;
 }
 
 //calling functions for testing
 let dateString = getDateString();
 let mirrDateString = mirrorDateString(dateString);
 let numbersPie = getNumbersPie(mirrDateString);
+//console.log(numbersPie);
