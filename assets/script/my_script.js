@@ -43,7 +43,7 @@ function mirrorDateString(str) {
     refernce for inversing the string:
     https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
   */
-  let mirror = str+ str.split("").reverse().join("");
+  let mirror = str + str.split("").reverse().join("");
   mirror = mirror.split("");
   return mirror;
 }
@@ -51,6 +51,17 @@ function mirrorDateString(str) {
 // F2 - input str, return array
 function getPaired(str) {
   /** turns received string to pairs of its symbols */
+  let arr = [];
+
+  str = str.split("");
+
+  for (let i = 0; arr.length < str.length; i++) {
+    let p = [];
+    p.push(str[i]);
+    p.push(str[i+1]);
+    arr.push(p);
+  }
+  return arr;
 }
 
 // F3 - input array, return number
@@ -61,6 +72,20 @@ function getSummed(arr) {
    * else pass sum to getPaired() as a str
    * run itself
   */
+  //arr = ['1', '2'];
+  let sum;
+  a1 = Number.parseInt(arr[0]);
+  a2 = Number.parseInt(arr[1]);
+  sum = a1 + a2;
+  if (sum > 10) {
+    sum = sum.toString;
+    let p = [];
+    sum = sum.split("");
+    p.push(sum[0]);
+    p.push(sum[1]);
+    getSummed(p);
+  }
+  return sum.toString;
 }
 
 // F4 - input array, return str
@@ -71,6 +96,14 @@ function getNewString(arr) {
    * add result to str
    * return str
   */
+  let str;
+
+  arr.array.forEach(element => {
+    let sum = getSummed(element);
+    str.push(sum);
+  });
+
+  return str;
 }
 
 // F1 - input str, return array
