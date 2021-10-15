@@ -20,43 +20,43 @@ body {
     align-items: center;
 }
 
-#span0 {
+.span0 {
     background-color: white;
     color: black;
 }
-#span1 {
+.span1 {
     background-color: red;
     color: white;
 }
-#span2 {
+.span2 {
     background-color: darkblue;
     color: white;
 }
-#span3 {
+.span3 {
     background-color: green;
     color: white;
 }
-#span4 {
+.span4 {
     background-color: yellow;
     color: black;
 }
-#span5 {
+.span5 {
     background-color: lightblue;
     color: black;
 }
-#span6 {
+.span6 {
     background-color: seagreen;
     color: black;
 }
-#span7 {
+.span7 {
     background-color: pink;
     color: black;
 }
-#span8 {
+.span8 {
     background-color: orange;
     color: black;
 }
-#span9 {
+.span9 {
     background-color: violet;
     color: black;
 }
