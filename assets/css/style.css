@@ -1,40 +1,57 @@
+/* 
+To ensure more even responsiveness of mandala 
+a lot of measurements (both height and width) were set 
+using vh as measurement. 
+*/
 body {
     margin: 0 auto;
     padding: 0;
     border: none;
+    font-size: 2vh;
 }
 
 #date-input {
     padding: 2% 3%;
-    margin: 0 0 1% 0;
     background-color: grey;
 }
 
 #mandala {
-    font-size: 3vh;
-    height: fit-content;
-    min-height: 75vh;
-    width: 100vw;
+    box-sizing: border-box;
     background-color: whitesmoke;
     justify-content: center;
     background-size: contain;
+    white-space: nowrap; /* to keep in one line */
 }
 
-#mandala div {
-    margin-left: auto;
-    margin-right: auto;
+#input-display {
+    padding-top: 1vh;
+    padding-bottom: 2vh;
+}
+
+#mandala-display {
+    height: 75vh;
+    width: 50vh;
+}
+
+#mandala div{
+    line-height: 70%;
+    max-width: 100vw;
 }
 
 #mandala span {
-    width: 5.5%;
-    height: 5.5%;
+    width: 5.5vh;
+    height: 6.5vh;
     border: 1px solid black;
     border-radius: 50%;
-    padding: 1% 1.5%;
+    padding: .5vh .75vh;
     align-items: center;
+    box-sizing: border-box;
 }
 
-/* color changes based according to content */
+/* 
+color changes based according to content 
+because each number in the mandala corresponds to a color
+*/
 .span0 {
     background-color: white;
     color: black;
@@ -76,52 +93,52 @@ body {
     color: black;
 }
 
-/* sizing for each mandala line based in the length of it */
+/* sizing for each mandala line based of the length of it */
 .div-size16 {
     padding-left: 1%;
 }
 .div-size15 {
-    padding-left: 3.5%;
+    padding-left: 4.2%;
 }
 .div-size14 {
-    padding-left: 6%;
+    padding-left: 7.4%;
 }
 .div-size13 {
-    padding-left: 8.5%;
+    padding-left: 10.6%;
 }
 .div-size12 {
-    padding-left: 11%;
+    padding-left: 13.8%;
 }
 .div-size11 {
-    padding-left: 13.5%;
+    padding-left: 17%;
 }
 .div-size10 {
-    padding-left: 16%;
+    padding-left: 20.2%;
 }
 .div-size9 {
-    padding-left: 18.5%;
+    padding-left: 23.4%;
 }
 .div-size8 {
-    padding-left: 21%;
+    padding-left: 26.6%;
 }
 .div-size7 {
-    padding-left: 23.5%;
+    padding-left: 29.8%;
 }
 .div-size6 {
-    padding-left: 26%;
+    padding-left: 33%;
 }
 .div-size5 {
-    padding-left: 28.5%;
+    padding-left: 36.2%;
 }
 .div-size4 {
-    padding-left: 31%;
+    padding-left: 39.4%;
 }
 .div-size3 {
-    padding-left: 33.5%;
+    padding-left: 42.6%;
 }
 .div-size2 {
-    padding-left: 36%;
+    padding-left: 45.8%;
 }
 .div-size1 {
-    padding-left: 38.5%;
+    padding-left: 49%;
 }
