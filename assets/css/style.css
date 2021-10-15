@@ -1,5 +1,62 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    border: none;
+}
+
 #mandala {
-    height: 100px;
-    weight: 100px;
-    background-color: blueviolet;
+    height: 90vh;
+    width: 100vw;
+    background-color: whitesmoke;
+    justify-content: center;
+}
+
+#mandala span {
+    width: fit-content;
+    height: 5.5%;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 3px;
+    align-items: center;
+}
+
+#span0 {
+    background-color: white;
+    color: black;
+}
+#span1 {
+    background-color: red;
+    color: white;
+}
+#span2 {
+    background-color: darkblue;
+    color: white;
+}
+#span3 {
+    background-color: green;
+    color: white;
+}
+#span4 {
+    background-color: yellow;
+    color: black;
+}
+#span5 {
+    background-color: lightblue;
+    color: black;
+}
+#span6 {
+    background-color: seagreen;
+    color: black;
+}
+#span7 {
+    background-color: pink;
+    color: black;
+}
+#span8 {
+    background-color: orange;
+    color: black;
+}
+#span9 {
+    background-color: violet;
+    color: black;
 }
