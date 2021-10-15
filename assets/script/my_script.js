@@ -148,7 +148,7 @@ function handleSubmit(event) {
   <div id="mandala-display">`;
 
   for (let str of mandala) {
-    html += `<div>
+    html += `<div class="div-size${str.length}">
     `;
     for (let i=0;  i < str.length; i++) {
       html += `<span class="span${str[i]}"> ${str[i]} </span>`;

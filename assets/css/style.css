@@ -4,22 +4,37 @@ body {
     border: none;
 }
 
+#date-input {
+    padding: 2% 3%;
+    margin: 0 0 1% 0;
+    background-color: grey;
+}
+
 #mandala {
-    height: 90vh;
+    font-size: 3vh;
+    height: fit-content;
+    min-height: 75vh;
     width: 100vw;
     background-color: whitesmoke;
     justify-content: center;
+    background-size: contain;
+}
+
+#mandala div {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #mandala span {
-    width: fit-content;
+    width: 5.5%;
     height: 5.5%;
     border: 1px solid black;
     border-radius: 50%;
-    padding: 3px;
+    padding: 1% 1.5%;
     align-items: center;
 }
 
+/* color changes based according to content */
 .span0 {
     background-color: white;
     color: black;
@@ -45,7 +60,7 @@ body {
     color: black;
 }
 .span6 {
-    background-color: seagreen;
+    background-color: mediumaquamarine;
     color: black;
 }
 .span7 {
@@ -59,4 +74,54 @@ body {
 .span9 {
     background-color: violet;
     color: black;
+}
+
+/* sizing for each mandala line based in the length of it */
+.div-size16 {
+    padding-left: 1%;
+}
+.div-size15 {
+    padding-left: 3.5%;
+}
+.div-size14 {
+    padding-left: 6%;
+}
+.div-size13 {
+    padding-left: 8.5%;
+}
+.div-size12 {
+    padding-left: 11%;
+}
+.div-size11 {
+    padding-left: 13.5%;
+}
+.div-size10 {
+    padding-left: 16%;
+}
+.div-size9 {
+    padding-left: 18.5%;
+}
+.div-size8 {
+    padding-left: 21%;
+}
+.div-size7 {
+    padding-left: 23.5%;
+}
+.div-size6 {
+    padding-left: 26%;
+}
+.div-size5 {
+    padding-left: 28.5%;
+}
+.div-size4 {
+    padding-left: 31%;
+}
+.div-size3 {
+    padding-left: 33.5%;
+}
+.div-size2 {
+    padding-left: 36%;
+}
+.div-size1 {
+    padding-left: 38.5%;
 }
