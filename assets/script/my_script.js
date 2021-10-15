@@ -4,8 +4,9 @@
 /* 
   References for manipulations of the date:
   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+  * and other JS reference documentations on attributes and built in functions incl. Strings, forms etc.
   * notes of the CI course
-  * mentor help
+  * mentor's help
 */
 
 /**
@@ -16,26 +17,10 @@ function getDateString(dateInput){
   /* getting the date string ddmmyyyy */
   let date, month, year;
 
-  /* 
-    for testing purposes of functions 
-    for now only using today's date
-  */
-  //let dateInput = new Date(); // date is the today's date
-
-  // dd
-  date = dateInput.getDate().toString();
-
-  // mm (0 needed for january till september)
-  month = Number.parseInt(dateInput.getMonth()); 
-  month++; // getMonth() starts counting from 0 as the first
-  let m = Number.parseInt(month);
-  if (m < 10){
-    month = '0' + month;
-  }
-  month = month.toString();
-
-  // yyyy
-  year = dateInput.getFullYear().toString(); 
+  // because the received input is yyyy-mm-dd
+  date = dateInput.substring(8, 10);
+  month = dateInput.substring(5, 7);
+  year = dateInput.substring(0, 4);
   
   // dateString
   dateInput = date + month + year;
@@ -155,8 +140,26 @@ function handleSubmit(event) {
    */
   let input = document.getElementById('date');
   
-  document.getElementById('mandala').innerHTML = input.value;
+  let html = document.getElementById('mandala').innerHTML;
+  html = input.value;
   console.log(input.value);
+  let mandala = caller(input.value);
+  console.log(mandala[0]);
+
+  // for (let i of mandala) {
+  //   console.log(i);
+  //     //mandala[i].split("");
+  // }
+
+  console.log('split');
+  console.log(mandala);
+
+  //for (let i of mandala) {
+    //for (let j of mandala[i]) {
+      //console.log(i + j);
+      //console.log(mandala[i][j])
+    //}
+  //}
 
   /*
     return added to make sure the form keeps values after submit button is pushed
