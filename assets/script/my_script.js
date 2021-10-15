@@ -139,27 +139,27 @@ function handleSubmit(event) {
    * and calls for mandala slice to be created (caller())
    */
   let input = document.getElementById('date');
-  
-  let html = document.getElementById('mandala').innerHTML;
-  html = input.value;
-  console.log(input.value);
+  console.log('Received date: ' + input.value);
   let mandala = caller(input.value);
-  console.log(mandala[0]);
 
-  // for (let i of mandala) {
-  //   console.log(i);
-  //     //mandala[i].split("");
-  // }
+  // html to display the mandala
+  let html = `
+  <div id="input-display">Date: ${input.value}</div>
+  <div id="mandala-display">`;
 
-  console.log('split');
-  console.log(mandala);
+  for (let str of mandala) {
+    html += `<div>
+    `;
+    for (let i=0;  i < str.length; i++) {
+      html += `<span class="span${str[i]}"> ${str[i]} </span>`;
+    }
+    html += `</div><br>
+    `;
+  }
+  
+  html += `</div>`;
 
-  //for (let i of mandala) {
-    //for (let j of mandala[i]) {
-      //console.log(i + j);
-      //console.log(mandala[i][j])
-    //}
-  //}
+  document.getElementById('mandala').innerHTML = html;
 
   /*
     return added to make sure the form keeps values after submit button is pushed
