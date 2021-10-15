@@ -5,9 +5,14 @@
   References for manipulations of the date:
   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
   * notes of the CI course
+  * mentor help
 */
 
-function getDateString(){
+/**
+ * Calculations to get from date to mandala slice
+ */
+
+function getDateString(dateInput){
   /* getting the date string ddmmyyyy */
   let date, month, year;
 
@@ -15,7 +20,7 @@ function getDateString(){
     for testing purposes of functions 
     for now only using today's date
   */
-  let dateInput = new Date(); // date is the today's date
+  //let dateInput = new Date(); // date is the today's date
 
   // dd
   date = dateInput.getDate().toString();
@@ -127,8 +132,39 @@ function getNumbersPie(dateStr) {
   return mandalaSlice;
 }
 
-//calling functions for testing
-let dateString = getDateString();
-let mirrDateString = mirrorDateString(dateString);
-let numbersPie = getNumbersPie(mirrDateString);
-//console.log(numbersPie);
+function caller(dateInput) {
+  /**
+   * Calls functions for creating a mandala slice for the user entered date
+   */
+  let dateString = getDateString(dateInput);
+  let mirrDateString = mirrorDateString(dateString);
+  let numbersPie = getNumbersPie(mirrDateString);
+  
+  return numbersPie;
+}
+
+/**
+ * Code related to directly interacting with users
+ */
+
+
+function handleSubmit(event) {
+  /**
+   * function reacts to a date submission in the form
+   * and calls for mandala slice to be created (caller())
+   */
+  let input = document.getElementById('date');
+  
+  document.getElementById('mandala').innerHTML = input.value;
+  console.log(input.value);
+
+  /*
+    return added to make sure the form keeps values after submit button is pushed
+    reference:
+    https://stackoverflow.com/questions/26008538/keep-input-value-after-form-submit-with-a-catch
+  */
+  return false;
+}
+
+//let form = document.getElementById('form');
+//form.addEventListener('submit', handleSubmit);

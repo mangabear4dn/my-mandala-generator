@@ -10,15 +10,21 @@
 <body>
     <header>
     </header>
-    <section id="mandala-section">
-        <div>
-            <form action="" method="">
-                <input type="date" name="date" id="date">
-            </form>
-        </div>
-    </section>
-    <footer>
-    </footer>
+    <div id='date-input'>
+        <!-- 
+            Contains form for user to input date for mandala creation
+         -->
+        <form action="" id="form" onsubmit="return handleSubmit()">
+            <label for="date">Choose date: </label>
+            <input type="date" name="date" id="date">
+            <button type="submit" id="submit">Calculate my mandala!</button>
+        </form>
+    </div>
+    <div id='mandala'>
+        <!-- 
+            Placeholder text when no date has been entered with information about how the mandala is created and what to do
+         -->
+    </div>
     <script src="assets/script/my_script.js"></script>
 </body>
 </html>
