@@ -1,8 +1,16 @@
+/* 
+The color pallet is grey, whitesmoke and black.
+It was chosen because the mandala result itself contains a lot of bright colors 
+and the user might be overwelmed if bright background colors were used as well. 
+ */
 body {
     margin: 0 auto;
     padding: 0;
     border: none;
     font-size: 2vh;
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
 }
 
 #date-input {
@@ -10,17 +18,28 @@ body {
     background-color: grey;
 }
 
+#date-input button {
+    background-color: whitesmoke;
+    color: black;
+}
+
+#date-input button:hover {
+    background-color: grey;
+    color: whitesmoke;
+}
+
 /* 
 To ensure more even responsiveness of mandala 
 a lot of measurements (both height and width) were set 
-using vh as measurement. 
+using vh as the measurement unit. 
 */
 #mandala {
     box-sizing: border-box;
-    background-color: whitesmoke;
     justify-content: center;
     background-size: contain;
     white-space: nowrap; /* to keep in one line */
+    position: relative;
+    float: left;
 }
 
 #mandala-display {
@@ -54,15 +73,15 @@ because each number in the mandala corresponds to a color
 }
 .span1 {
     background-color: red;
-    color: white;
+    color: whitesmoke;
 }
 .span2 {
     background-color: darkblue;
-    color: white;
+    color: whitesmoke;
 }
 .span3 {
     background-color: green;
-    color: white;
+    color: whitesmoke;
 }
 .span4 {
     background-color: yellow;
@@ -143,7 +162,8 @@ because each number in the mandala corresponds to a color
 Statistics section styling 
 */
 #stats {
-    background-color: whitesmoke;
+    position: relative;
+    float: right;
 }
 
 #input-display {
@@ -151,6 +171,11 @@ Statistics section styling
     height: 10%;
     padding-top: 1vh;
     padding-bottom: 2vh;
+    color: whitesmoke;
+}
+
+#stats table {
+    padding: 10vh;
 }
 
 th, td {
@@ -159,7 +184,13 @@ th, td {
     text-align: center;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 600px) {
+    #mandala {
+        width: 50%;
+    }
+    #stats {
+        width: 50%;
+    }
     #mandala-display{
         padding: 7vw;
     }
