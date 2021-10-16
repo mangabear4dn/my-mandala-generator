@@ -11,102 +11,146 @@ This site was created to solve real life problem. The person who requested the s
 The information on how to do the calculations and how to visually represent them I did a phone consultation with the person and she also provided a material from a magazine (in Russian) that explains the process. ( [Resource1](assets/images/resource1.png), 
 [Resource2](assets/images/resource2.png) )
 
+Since the results ecpected of every calculation will be colorful the website was designed in neutral colors - black, grey, whitesmoke.
+
 ## Features 
 
 ### Existing Features
 
+- __Title__
+
+  - The title's purpose is to work as a link to refresh the page and a reminder what the page is for.
+  - The text 'My mandala' is only visible on bigger screens.
+  - The link is tied only to the mandala image in the corner.
+
 ![Title](assets/images/title.png)
+
+- __Intro__
+
+  - This an introduction to the site and it's purpose to anyone who finds it.
+  - The text is mostly there as placeholder for the results. This text is overwritten by the results.
+  - Code in index.html
+
 ![Intro](assets/images/header-mobile.png)
+
+- __Form__
+
+  - This is a very simplistic form. It contains only label, date input field and the 'Calculate my mandala!' (submit) button.
+  - The calculations are triggered by the submitting of the form.
+  - The date field itself provides some validation to the input as well as the check that the value has been given (in js file) but the date itself isn't checked for realism. It is possible to pick any date as long as it meets the format.
+  - I left this without restriction because mandalas can be drawn for any date and a casual visitor to the site that isn't interested in any specific calculations can play with it if they like.
+  - Code in index.html
+
 ![Form](assets/images/form.png)
+
+- __Mandala Slice__
+
+  - This is the main attraction of the site. And the reason why this site would be interesting to the target audience.
+  - The mandala slice is one of six identical segments that combined create the personalised mandala. Since the person who requested the site does the mandala drawing and coloring as an art work. The interest was to create a good reference to the number and color positions.
+  - One color refers to only one kind of number and vice versa.
+  - The calculations:
+    - modify the date to be in the ddmmyyyyyyyymmdd format
+    - count together each two elemnts next to each other together (in the mandala itself the calculation is directed inward)
+    - if the sum is bigger than 9 then both digits are counted together as well, because the the entry to the next line can only be one digit long for each sum
+    - the summing goes on untill there is only one digit left
+  -Code in my_script.js
+
 ![Mandala Slice](assets/images/mandala-date.png)
+
+- __Table__
+
+  - This was asked as an extra feature to help with the analysis of the mandala
+  - It contains all possible numbers in the mandala, the color assigned to each and a number of times it appeared in the mandala displayed
+  - Code in my_script.js
+
 ![Table](assets/images/table.png)
-
-- __Navigation Bar__
-
-  - Featured on all three pages, the full responsive navigation bar includes links to the Logo, Home page, Gallery and Sign Up page and is identical in each page to allow for easy navigation.
-  - This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button. 
-
-![Nav Bar](https://github.com/lucyrush/readme-template/blob/master/media/love_running_nav.png)
-
-- __The Sign Up Page__
-
-  - This page will allow the user to get signed up to Love Running to start their running journey with the community. The user will be able specify if they would like to take part in road, trail or both types of running. The user will be asked to submit their full name and email address. 
-
-![Sign Up](https://github.com/lucyrush/readme-template/blob/master/media/love_running_signup.png)
-
-For some/all of your features, you may choose to reference the specific project files that implement them.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
 ### Features Left to Implement
 
-- Another feature idea
+- Date entry by adding the date at the end of the URL link
+- Adding similar calculations and visuals about a person's name as well.
 
-## Testing 
+## Testing
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your project’s features and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+### Mandala slice creation
 
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+Finding a good and efective way to calculate the mandala slice from the date entry took moste of the raw coding time. The end result of the calculations looks very different tha the beggining of the first testable code.
 
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+The calculating in the end was divide in multiple functions:
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+- getDateString(dateInput)
+  - This piece of the code takes the input of the form and returns a string of the date in a format ddmmyyyy
+  - The first version of this code took the date of the current day and created the string from that but after the form with date input was added the parameter the function receives didn't need so many modifications and it was mostly transform as one string to another because the value passed to the funtion was in format yyyy-mm-dd
 
+- mirrorDateString(str)
+  - This function is only supposed to add a mirror af the parameter string at the end of it and return that (ddmmyyyyyyyymmdd)
+
+- getPaired(str)
+  - This string takes the mirror string and creates pairs to be used for the calsulations later. It terurns the pairs as an array of arrays. All subarrays are size 2.
+
+- getSummed(arr)
+  - Takes the result array pair, adds together and if necessary calls itself to repeat the process for any sum thats bigger than 9.
+  - Parameter received is a size 2 array and the returned value is a new string of one element
+
+- getNewString(arr)
+  - Iterates the array of arrays of pairs, calls theSummed function on each of the pairs, adds all the new sums to a new string that it returns
+
+- getNumbersPie(dateStr)
+  - Creates the mandala slice matrix by iterating some of the previously mentioned functions
+
+- caller(dateInput)
+  - Takes date input and returns the mandala matrix
+  - This function only calls other functions to get the result needed.
+
+- handleSubmit(event)
+  - Validates the sumbit
+  - Calls the caller function
+  - Creates the html code for the mandala pie slice matrix
+  - Creates the html code for the table of counts
+  - returns false to keep the page from reseting to the begginig state a milisecond after sumbit
 
 ### Validator Testing 
 
 - HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-running-2.0%2Findex.html)
+  ![Error](assets/images/html-error.png)
+  ![Sesolved](assets/images/html-valid.png)
+  - There was only one error notice in the HTML validator and it was quicly resolved [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-running-2.0%2Findex.html)
+
 - CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-running-2.0%252Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#css)
+  ![CSS](assets/images/css-valid.png)
+  - Everything was ok after testing the CSS [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-running-2.0%252Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#css)
+
+- JS
+  - After the creation of most of the JS function that were workable before the form was created. I tested them individually in the python tutor by rearranging the code to have the necessary inputs from the outside in.
+  - Testing the whole JS code wasn.t possible because the python tutor can handle only 1000 actions and that number was exceeded by only 3 or 4 lines of mandala calculated.
+  [PythonTutor](https://pythontutor.com/visualize.html#mode=edit)
+
+- Chrome Dev Tools
+  - most of the testing and debugging at the later part when the JS code was too heavy for the python tutor was done by Chrome Dev Tools (console watching, debugger, inspecting elements etc)
+  ![Lighthouse mobile](assets/images/lighthouse-mobile.png)
+  - The final tests with Lighthouse showed good results
 
 ### Unfixed Bugs
 
-You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
+As of this moment all known bugs have been fixed.
 
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub) 
+For the site creation was used the GitHub dev enviroment GitPod. The project was created using the CI template available on GitHub.
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows: 
-  - In the GitHub repository, navigate to the Settings tab 
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
+The site was published on GitHub Pages (in GitHub settings using main branch and root access)
 
-The live link can be found here - https://code-institute-org.github.io/love-running-2.0/index.html 
+When the site was first published the site didn;y work. But I had this same issue on the previous project and the solution the was to simply to make an insignificant change on one of the files on the project and the 'git push -f' the local repository to GitHub. And the solution worked out.
 
+After this there wasn't any issue with the published site.
 
 ## Credits 
 
-In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-
-You can break the credits section up into Content and Media, depending on what you have included in your project. 
-
-### Content 
-
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-
-### Media
-
-- The photos used on the home and sign up page are from This Open Source site
-- The images used for the gallery page were taken from this other open source site
-
-
-Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 
-
-## Other General Project Advice
-
-Below you will find a couple of extra tips that may be helpful when completing your project. Remember that each of these projects will become part of your final portfolio so it’s important to allow enough time to showcase your best work! 
-
-- One of the most basic elements of keeping a healthy commit history is with the commit message. When getting started with your project, read through [this article](https://chris.beams.io/posts/git-commit/) by Chris Beams on How to Write  a Git Commit Message 
-  - Make sure to keep the messages in the imperative mood 
-
-- When naming the files in your project directory, make sure to consider meaningful naming of files, point to specific names and sections of content.
-  - For example, instead of naming an image used ‘image1.png’ consider naming it ‘landing_page_img.png’. This will ensure that there are clear file paths kept. 
-
-- Do some extra research on good and bad coding practices, there are a handful of useful articles to read, consider reviewing the following list when getting started:
-  - [Writing Your Best Code](https://learn.shayhowe.com/html-css/writing-your-best-code/)
-  - [HTML & CSS Coding Best Practices](https://medium.com/@inceptiondj.info/html-css-coding-best-practice-fadb9870a00f)
-  - [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html#General)
+- The mentor Guido Cecilio was a lot of help during the project - with advices and suggestions 
+- Developer Mozilla docs were used to look up the Date, String and Array functions especially 
+- Some stackflow content as well (references next to the code parts)
+- Vineta Kokenberga provided the information and necessary results of the site's end product
+- The previously mentioned validators, code checkers and debuggers were used
+- Code institute materials, personal notes of them
+- other with references next to the relevent sections (like Am I Responsive in this document)
+- The mandala images were Google searched
