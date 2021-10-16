@@ -139,7 +139,7 @@ function handleSubmit(event) {
   let input = document.getElementById('date');
 
   // check that date was entered
-  if (!(input.value)) {
+  if (input.value === '') {
     alert("Please enter date to calculate mandala!")
     return false;
   }
