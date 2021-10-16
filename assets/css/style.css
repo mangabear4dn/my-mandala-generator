@@ -82,6 +82,19 @@ using vh as the measurement unit.
 #mandala div{
     line-height: 70%;
     max-width: 100vw;
+
+}
+
+#intro {
+    padding: 10vw 10vh;
+    color: grey;
+    height: fit-content;
+    width: 80vw;
+    white-space: pre-wrap;
+}
+
+#intro > h1, h2, h3, ol {
+    line-height: 120%;
 }
 
 #mandala span {
