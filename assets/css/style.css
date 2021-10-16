@@ -14,8 +14,38 @@ body {
 }
 
 #date-input {
-    padding: 2% 3%;
+    padding: 5px;
     background-color: grey;
+    min-height: fit-content;
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
+
+#mandala-link img{
+    width: 45px;
+    height: 45px;
+    position: relative;
+    float: left;
+}
+
+#my-mandala {
+    color: whitesmoke;
+    position: absolute;
+    font-size: 40px;
+    left: 60px;
+    top: 5px;
+    text-decoration: none;
+    visibility: hidden;
+    opacity: .5;
+}
+
+#form {
+    width: 90%;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    text-align: right;
 }
 
 #date-input button {
@@ -182,6 +212,9 @@ th, td {
 }
 
 @media screen and (min-width: 900px) {
+    #my-mandala {
+        visibility: visible;
+    }
     #mandala {
         clear: none;
     }
