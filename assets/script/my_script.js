@@ -144,7 +144,6 @@ function handleSubmit(event) {
 
   // html to display the mandala
   let html = `
-  <div id="input-display">Date: ${input.value}</div>
   <div id="mandala-display">`;
 
   for (let str of mandala) {
@@ -156,15 +155,62 @@ function handleSubmit(event) {
     html += `</div><br>
     `;
   }
-  
+
   html += `</div>`;
 
   document.getElementById('mandala').innerHTML = html;
 
+  /* 
+   statistics about the displayed mandala
+   reference to the calculations for the count:
+   https://stackoverflow.com/questions/881085/count-the-number-of-occurrences-of-a-character-in-a-string-in-javascript?rq=1
+  */
+  let statistics = `
+  <div id="input-display">Date: ${input.value}</div>
+  <table>
+  <thead>
+  <tr>
+  <th>Number</th>
+  <th>Color</th>
+  <th>Count</th>
+  </tr>
+  </thead>
+  <tbody>`;
+  
+  let colors = ['White', 'Red', 'Dark blue', 'Green', 'Yellow', 'Light Blue', 'Sea Green', 'Pink', 'Orange', 'Violet'];
+  let counter = [0,0,0,0,0,0,0,0,0,0];
+  
+  for (let str of mandala) {
+    for (let i of str) {
+      let count = str.match(new RegExp(i, "g")) || [].length;
+      count.parseInt;
+      counter[i]++;
+    }
+  }
+  console.log(counter);
+  
+  for (let i = 0; i < counter.length; i++) {
+    statistics += `
+    <tr>
+    <td>${i}</td>
+    <td class='span${i}'>${colors[i]}</td>
+    <td>${counter[i]}</td>
+    </tr>`;
+  }
+  
+  statistics += `
+  </tbody>
+  </table>`;
+
+  console.log(statistics);
+
+  document.getElementById('stats').innerHTML = statistics;
+
   /*
     return added to make sure the form keeps values after submit button is pushed
-    reference:
+    references:
     https://stackoverflow.com/questions/26008538/keep-input-value-after-form-submit-with-a-catch
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
   */
   return false;
 }
