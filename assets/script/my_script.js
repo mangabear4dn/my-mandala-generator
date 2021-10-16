@@ -94,7 +94,6 @@ function getNewString(arr) {
     let sum = getSummed(element);
     str.push(sum);
   });
-  //console.log(str); 
   return str.join("");
 }
 
@@ -112,7 +111,6 @@ function getNumbersPie(dateStr) {
     let pairs = getPaired(mandalaSlice[i]); // gets pairs from the previous array
     let array = getNewString(pairs); // creates a new array
     mandalaSlice.push(array);
-    //console.log(array);
   }
   return mandalaSlice;
 }
@@ -139,6 +137,13 @@ function handleSubmit(event) {
    * and calls for mandala slice to be created (caller())
    */
   let input = document.getElementById('date');
+
+  // check that date was entered
+  if (!(input.value)) {
+    alert("Please enter date to calculate mandala!")
+    return false;
+  }
+
   console.log('Received date: ' + input.value);
   let mandala = caller(input.value);
 
@@ -214,6 +219,3 @@ function handleSubmit(event) {
   */
   return false;
 }
-
-//let form = document.getElementById('form');
-//form.addEventListener('submit', handleSubmit);
