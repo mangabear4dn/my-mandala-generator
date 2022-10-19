@@ -192,7 +192,7 @@ function handleSubmit(event) {
       counter[i]++;
     }
   }
-  console.log(counter);
+  // console.log(counter);
   
   for (let i = 0; i < counter.length; i++) {
     statistics += `
@@ -207,9 +207,73 @@ function handleSubmit(event) {
   </tbody>
   </table>`;
 
-  console.log(statistics);
+  // console.log(statistics);
 
   document.getElementById('stats').innerHTML = statistics;
+
+  /* 
+   Seven cycles of 52 days starting from the day after birthday
+  */
+  let days52 = `
+  <div>Day 0 (mm.dd): ${input.value.substring(5, 10)}</div>
+  <table>
+  <thead>
+  <tr>
+  <th>Cycle</th>
+  <th>Time period</th>
+  <th>Meaning</th>
+  </tr>
+  </thead>
+  <tbody>`;
+
+  date0 = Date.parse(input.value);
+  console.log(date0);
+
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  let counterForDates = [[1, 52], [53, 104], [105, 156], [157, 208], [209, 260], [261, 312], [313, 364]];
+  let dates52 = [];
+  let meanings52 = ['-1-', '-2-', '-3-', '-4-', '-5-', '-6-', '-7-'];
+
+  /*
+    Reference: https://stackoverflow.com/questions/563406/how-to-add-days-to-date
+    Calculating adding days to the birthday for the ranges
+  */
+    Date.prototype.addDays = function(days) {
+      var date = new Date(date0.valueOf());
+      date.setDate(date.getDate() + days);
+      return date;
+  }
+  var dateStart = new Date();
+  console.log(dateStart.addDays(5));
+
+
+  for (let i = 0; i < counterForDates.length; i++) {
+    let fromDate = dateStart.addDays(counterForDates[i][0]);
+    let tillDate = dateStart.addDays(counterForDates[i][1]);
+    let rangeDates = `${monthNames[fromDate.getMonth()]} ${fromDate.getDate()} - ${monthNames[tillDate.getMonth()]} ${tillDate.getDate()}`;
+    dates52.push(rangeDates);
+    console.log(i);
+  }
+
+  console.log(dates52);
+  
+  for (let i = 0; i < 7; i++) {
+    days52 += `
+    <tr>
+    <td>${i+1}</td>
+    <td>${dates52[i]}</td>
+    <td>${meanings52[i]}</td>
+    </tr>`;
+  }
+  
+  days52 += `
+  </tbody>
+  </table>`;
+
+  // console.log(days52);
+
+  document.getElementById('days52').innerHTML = days52;
 
   /*
     return added to make sure the form keeps values after submit button is pushed
